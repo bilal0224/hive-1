@@ -91,14 +91,14 @@ public class TestPartitionManagement {
           // First drop any databases in catalog
           List<String> databases = client.getAllDatabases(catName);
           for (String db : databases) {
-            client.dropDatabase(catName, db, true, false, true);
+            client.dropDatabase(catName, db, false, false, true);
           }
           client.dropCatalog(catName);
         } else {
           List<String> databases = client.getAllDatabases(catName);
           for (String db : databases) {
             if (!db.equalsIgnoreCase(Warehouse.DEFAULT_DATABASE_NAME)) {
-              client.dropDatabase(catName, db, true, true, true);
+              client.dropDatabase(catName, db, false,false, true);
             }
           }
         }
