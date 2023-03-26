@@ -98,6 +98,9 @@ public class TestPartitionManagement {
           List<String> databases = client.getAllDatabases(catName);
           for (String db : databases) {
             if (!db.equalsIgnoreCase(Warehouse.DEFAULT_DATABASE_NAME)) {
+              for (String table : client.getAllTables(db)) {
+                client.dropTable(db, table, true, true);
+              }
               client.dropDatabase(catName, db, true ,false, true);
             }
           }
